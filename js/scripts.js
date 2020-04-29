@@ -50,15 +50,14 @@ function showCalendar(month, year) {
     // creating all cells
     let date = 1;
     for (let i = 0; i < 6; i++) {
-        // creates a table row
-        let row = document.createElement("tr");
+        
+        let row = document.createElement("tr"); // creates a table row
 
-        //creating individual cells, filing them up with data.
-        for (let j = 0; j < 7; j++) {
+        for (let j = 0; j < 7; j++) { //creating individual cells, filing them up with data.
             if (i === 0 && j < firstDay) {
                 let cell = document.createElement("td");
-                let cellText = document.createTextNode("");
-                cell.appendChild(cellText);
+                //let cellText = document.createTextNode("");
+                //cell.appendChild(cellText);
                 row.appendChild(cell);
             }
             else if (date > daysInMonth) {
