@@ -22,14 +22,14 @@ function previous() {
     //currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     if (currentMonth === 0){ currentYear -= 1; }
     //currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-    if (currentMonth === 0){ currentMonth = 11; } else { currentMonth -= 1; }
+    if (currentMonth == 0){ currentMonth = 11; } else { currentMonth -= 1; } // DOUBLE EQUALS, NOT TRIPLE
     showCalendar(currentMonth, currentYear);
 }
 
 function jump() {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
-    showCalendar(day, currentMonth, currentYear);
+    showCalendar(currentMonth, currentYear);
 }
 
 function showCalendar(month, year) {
@@ -67,7 +67,8 @@ function showCalendar(month, year) {
                 let cell = document.createElement("td"); // creates cell (td)
                 cell.id = date; // sets cells id to its date
                 cell.onclick = function(){
-                    let destination = new URL("http://localhost:8080/PPM-new-master/index.php"); // location address
+                    //let destination = new URL("http://localhost:8080/PPM-new-master/index.php"); // location address
+                    let destination = new URL(window.location.href); // location address
                     destination.search = "?day=" + cell.id + "&month=" + (month+1) + "&year=" + year; // dynamic URL
                     window.location.href = destination; // sends user to address
                 }
