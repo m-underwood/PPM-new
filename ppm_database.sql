@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2020 at 03:44 PM
+-- Generation Time: Apr 29, 2020 at 06:38 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `events_tbl` (
   `id` int(11) NOT NULL,
-  `location` varchar(255) NOT NULL,
+  `location_name` varchar(255) NOT NULL,
   `starting_date` date NOT NULL,
   `ending_date` date NOT NULL,
   `starting_time` time NOT NULL,
@@ -41,9 +41,12 @@ CREATE TABLE `events_tbl` (
 -- Dumping data for table `events_tbl`
 --
 
-INSERT INTO `events_tbl` (`id`, `location`, `starting_date`, `ending_date`, `starting_time`, `details`, `comments`) VALUES
+INSERT INTO `events_tbl` (`id`, `location_name`, `starting_date`, `ending_date`, `starting_time`, `details`, `comments`) VALUES
+(0, 'Police Station', '0000-00-00', '2020-06-05', '00:00:00', 'added to database', '1st attempt'),
 (1, 'National', '2020-04-01', '2020-04-30', '00:00:00', 'National alcohol awareness month running from the 1 - 30th April', NULL),
-(2, 'National', '2020-09-10', '2020-09-10', '00:00:00', 'Suicide prevention day', NULL);
+(2, 'National', '2020-09-10', '2020-09-10', '00:00:00', 'Suicide prevention day', NULL),
+(10, 'Police Station', '2020-04-09', '2020-04-30', '12:12:12', 'added to database', '1st attempt'),
+(15, 'Police Station', '2020-04-07', '2020-04-30', '12:12:12', 'added to database', '1st attempt');
 
 --
 -- Indexes for dumped tables
