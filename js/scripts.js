@@ -29,7 +29,7 @@ function previous() {
 function jump() {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
-    showCalendar(currentMonth, currentYear);
+    showCalendar(day, currentMonth, currentYear);
 }
 
 function showCalendar(month, year) {
@@ -49,34 +49,39 @@ function showCalendar(month, year) {
 
     // creating all cells
     let date = 1;
-    for (let i = 0; i < 6; i++) {
-        
+    for (let i = 0; i < 6; i++) { // creates row (tr)
+
         let row = document.createElement("tr"); // creates a table row
 
-        for (let j = 0; j < 7; j++) { //creating individual cells, filing them up with data.
-            if (i === 0 && j < firstDay) {
-                let cell = document.createElement("td");
-                //let cellText = document.createTextNode("");
-                //cell.appendChild(cellText);
-                row.appendChild(cell);
+        for (let j = 0; j < 7; j++) { // iterating through days
+            if (i === 0 && j < firstDay) { // only executing on the first day of the week
+                let cell = document.createElement("td"); // creates cell (td)
+                row.appendChild(cell); // appends cell
             }
-            else if (date > daysInMonth) {
-                break;
+
+            else if (date > daysInMonth) { // if its the last day of the month
+                break; // stop creating rows/cells
             }
 
             else {
-                let cell = document.createElement("td");
-                let cellText = document.createTextNode(date);
+                let cell = document.createElement("td"); // creates cell (td)
+                cell.id = date; // sets cells id to its date
+                cell.onclick = function(){
+                    let destination = new URL("http://localhost:8080/PPM-new-master/index.php"); // location address
+                    destination.search = "?day=" + cell.id + "&month=" + (month+1) + "&year=" + year; // dynamic URL
+                    window.location.href = destination; // sends user to address
+                }
+                
+                let cellText = document.createTextNode(date); // creates text with day no.
                 //if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {} // custom style for today's date
-                cell.appendChild(cellText);
-                row.appendChild(cell);
+                cell.appendChild(cellText); // appends text to cells
+                row.appendChild(cell); // appends cells to rows
                 date++;
             }
 
-
         }
 
-        tbl.appendChild(row); // appending each row into calendar body.
+        tbl.appendChild(row); // appends row
     }
 
 }
