@@ -1,10 +1,27 @@
 <!Doctype HTML>
 <?php
     
+    $day = $_REQUEST['day'];
+    $month = $_REQUEST['month'];
+    $year = $_REQUEST['year'];
+    echo $day;
+    echo $month;
+    echo $year;
+    $combineddate = $year.-$month.-$day;
+    echo  "<br>$combineddate";
     include "connectdatabase.php";
-    $sql = "SELECT * FROM events_tbl";
-    $result = mysqli_query($con, $sql);
+    /*
+    $sql = "SELECT * FROM events_tbl WHERE starting_date = '$combineddate'";
+    */
+    /*
+    $sql = "SELECT * FROM events_tbl WHERE ('$combineddate' < starting_date) && ('$combineddate' > ending_date)"
+    */
 
+    $sql = "SELECT * FROM events_tbl WHERE '$combineddate' BETWEEN starting_date AND ending_date";
+    
+    $result = mysqli_query($con, $sql);
+    
+    
 ?>
 
 <html>
@@ -14,8 +31,10 @@
 </head>
 
 <body>
-
+    
     <?php
+        
+        
         
         while($row = mysqli_fetch_assoc($result))
         {
@@ -33,6 +52,8 @@
             "<br><a href=updateform.php?ID=". $row["id"].">Update Event</a>".
             "</p>".
             "</div>";
+        
+
         }
     ?>
 
