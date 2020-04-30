@@ -67,8 +67,9 @@ function showCalendar(month, year) {
                 let cell = document.createElement("td"); // creates cell (td)
                 cell.id = date; // sets cells id to its date
                 cell.onclick = function(){
-                    //let destination = new URL("http://localhost:8080/PPM-new-master/index.php"); // location address
-                    let destination = new URL(window.location.href); // location address
+                    let destination = new URL("http://localhost:8080/PPM-new-master/eventsmasterpage.php"); // location address
+                    console.log(destination);
+                    //let destination = new URL(window.location.href); // location address
                     destination.search = "?day=" + cell.id + "&month=" + (month+1) + "&year=" + year; // dynamic URL
                     window.location.href = destination; // sends user to address
                 }
