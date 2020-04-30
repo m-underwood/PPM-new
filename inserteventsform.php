@@ -16,10 +16,10 @@
         <p>Starting Date: <input type = "date" name = "begin_date"></p>
         <p>Ending Date: <input type = "date" name = "end_date"></p>
         <p>Starting Time: <input type = "text" name ="start_time"></p>
-        <p>Community ID: <input type = "text" name = "community_id"></p>
         <p>Details: <input type = "text" name ="details"></p>
         <p>Comments: <input type = "text" name= "comments"></p>
-        
+        <p>Community Information: <input type = "text" name= "community_info"></p>
+        <p>Community Contact <input type = "text" name= "community_contact"></p>
         <input type = "submit">
 
 
