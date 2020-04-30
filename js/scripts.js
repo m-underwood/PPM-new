@@ -68,10 +68,8 @@ function showCalendar(month, year) {
                 cell.id = date; // sets cells id to its date
                 cell.onclick = function(){
                     let destination = new URL("http://localhost:8080/PPM-new-master/eventsmasterpage.php"); // location address
-                    let newDay = minTwoDigits(cell.id);
-                    let newMonth = minTwoDigits(month+1)
                     //let destination = new URL(window.location.href); // location address
-                    destination.search = "?day=" + newDay + "&month=" + (newMonth) + "&year=" + year; // dynamic URL
+                    destination.search = "?day=" + cell.appendChild.id + "&month=" + (Month+1) + "&year=" + year; // dynamic URL
                     window.location.href = destination; // sends user to address
                 }
                 
@@ -88,7 +86,3 @@ function showCalendar(month, year) {
     }
 
 }
-
-function minTwoDigits(entry) {
-    return (entry < 10 ? '0' : '') + entry;
-  }
