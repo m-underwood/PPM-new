@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2020 at 06:08 PM
+-- Generation Time: Apr 30, 2020 at 08:48 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -64,16 +64,17 @@ CREATE TABLE `events_tbl` (
   `start_time` time DEFAULT NULL,
   `details` varchar(255) DEFAULT NULL,
   `comments` varchar(255) DEFAULT NULL,
-  `community_id` int(10) DEFAULT NULL
+  `community_info` varchar(255) DEFAULT NULL,
+  `community_contact` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `events_tbl`
 --
 
-INSERT INTO `events_tbl` (`id`, `event_name`, `location_name`, `officers`, `begin_date`, `end_date`, `start_time`, `details`, `comments`, `community_id`) VALUES
-(2, 'Holiday', 'Police Station', 'Matthew, Billy', '2020-04-20', '0000-00-00', '05:00:00', 'added to database', 'Your screwed', NULL),
-(60, 'Holiday', 'Police Station', 'Matthew, Billy', '2020-04-08', '2020-04-23', '05:00:00', 'added to database', 'it was the $sign', NULL);
+INSERT INTO `events_tbl` (`id`, `event_name`, `location_name`, `officers`, `begin_date`, `end_date`, `start_time`, `details`, `comments`, `community_info`, `community_contact`) VALUES
+(3, 'Holiday', 'Home', 'Someone', '2020-04-01', '2020-04-22', '16:04:35', 'First attempt at entry', 'needs some comments in here', 'Religious ', 'Phone number: 078905605320'),
+(5, '1', '2', '3', '2020-04-14', '2020-04-21', '05:05:30', '2', '2', '2', '2');
 
 --
 -- Indexes for dumped tables
@@ -89,18 +90,7 @@ ALTER TABLE `communities_tbl`
 -- Indexes for table `events_tbl`
 --
 ALTER TABLE `events_tbl`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `community_id` (`community_id`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `events_tbl`
---
-ALTER TABLE `events_tbl`
-  ADD CONSTRAINT `events_tbl_ibfk_1` FOREIGN KEY (`community_id`) REFERENCES `communities_tbl` (`id`);
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
