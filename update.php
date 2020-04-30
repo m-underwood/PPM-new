@@ -25,10 +25,10 @@
         $comments = $_POST["comments"];
     }
 
-    $sql = "UPDATE events_tbl SET id = '$id', location_name = '$location_name', starting_date = '$starting_date', ending_date = '$ending_date', starting_time = '$starting_time',details = '$details', comments = 'comments'";
+    $sql = "UPDATE events_tbl SET location_name = '$location_name', starting_date = '$starting_date', ending_date = '$ending_date', starting_time = '$starting_time',details = '$details', comments = '$comments' WHERE ID = '$id'";
 
     if(mysqli_query($con, $sql)){
-        header("Location: eventsmasterpage.php")
+        header("Location: eventsmasterpage.php");
     }
     else
     {
