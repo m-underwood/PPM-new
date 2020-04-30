@@ -27,6 +27,11 @@
     if(isset($_POST["start_time"])){
         $start_time = $_POST["start_time"];
     }
+
+    if(isset($_POST["community_id"])){
+        $community_id = $_POST["community_id"];
+    }
+
     if(isset($_POST["details"])){
         $details = $_POST["details"];
     }
@@ -35,7 +40,7 @@
     }
 
     //insert values into the database
-    $sql = "INSERT INTO events_tbl ( id, event_name, location_name, officers, begin_date, end_date, start_time, details, comments) VALUES ('$id', '$event_name', '$location_name', '$officers', '$begin_date', '$end_date', '$start_time', '$details', '$comments')";
+    $sql = "INSERT INTO events_tbl ( id, event_name, location_name, officers, begin_date, end_date, start_time, community_id, details, comments) VALUES ('$id', '$event_name', '$location_name', '$officers', '$begin_date', '$end_date', '$start_time', '$community_id', '$details', '$comments')";
 
     //if values are successful redirect back to events.php or print error message
 
