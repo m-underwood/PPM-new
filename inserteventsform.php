@@ -19,11 +19,7 @@
         <p>Details: <input type = "text" name ="details"></p>
         <p>Comments: <input type = "text" name= "comments"></p>
         <p>Community Information: <input type = "text" name= "community_info"></p>
-        <p>Community Contact <input type = "text" name= "community_contact"></p>
+        <p>Community Contact: <input type = "text" name= "community_contact"></p>
         <input type = "submit">
-
-
 </body>
-
-
 </html>
