@@ -26,6 +26,7 @@
     <head>
         <title>Events</title>
         <link rel="stylesheet"  href="css/databaseCSS.css">
+        <link rel="icon" href="images/icon.jpg"/>
     </head>
     <body>
         <div id="header">
@@ -37,11 +38,11 @@
             <?php
                 echo"
                 <table id='tblDatabase'>
-                    <tr><td>test";
+                    <tr>test";
                         while($row = mysqli_fetch_assoc($result))
                         {
                             echo
-                            "<p> ID: " . $row["id"].
+                            "<td> ID: " . $row["id"].
                             "<br> Event Name: ". $row["event_name"].
                             "<br> Location: ". $row["location_name"].
                             "<br> Officers: ". $row["officers"].
@@ -52,14 +53,12 @@
                             "<br> Comments: " . $row["comments"].
                             "<br> Community Information: " . $row["community_info"].
                             "<br> Community Contact: " . $row["community_contact"].
-                            "<br><a href=events.php?ID=". $row["id"].">See further details</a>".
                             "<br><a href=deleteevent.php?ID=". $row["id"].">Delete Entry</a>".
                             "<br><a href=updateform.php?ID=". $row["id"].">Update Event</a>".
-                            "</p>";
+                            "</td>";
                         }
-
-                        echo "
-                    <td></tr>
+                    echo
+                "</tr>
                 </table>";
             ?>
 
