@@ -12,19 +12,14 @@
 
 		<h1> Sign In </h1>
 
-		<form id="form">
+		<form id="form" action = "ppm_login.php" method="post">
 			<div>
-			<input id="username" type="username" class ="inputBox" placeholder="Your Username">
+			<input id="username" type="username" class ="inputBox" placeholder="Your Username" name = "ppm_username">
 			</div>
 			<div>
-			<input id="password1" type="password" class ="inputBox" placeholder="Your Password">
+			<input id="password1" type="password" class ="inputBox" placeholder="Your Password" name = "ppm_password">
 			</div>
 			<button type = "submit" class = "signBtn"> Sign In </button>
-
-			<p> Forgot Password? <a href="http://google.com">Click Here</a></p>
-
-
-
 		</form>
 			<script src="form.js"></script>
 
