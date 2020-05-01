@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet"  href="css/stylesheet.css">
+        <title>Calendar</title>
+        <link rel="stylesheet"  href="css/calendarCSS.css">
         <link rel="icon" href="images/icon.jpg"/>
     </head>
     <body>
@@ -10,10 +11,6 @@
 
             <div id="txtTitle">
                 
-            </div>
-
-            <div id="btnTheme">
-                dark mode
             </div>
         </div>
 
