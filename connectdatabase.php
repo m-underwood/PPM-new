@@ -13,7 +13,7 @@
     }
     else
     {
-        echo "<strong>Successfully connected to database</strong><br><br>";
+        //echo "<strong>Successfully connected to database</strong><br><br>";
     }
 
 ?>
