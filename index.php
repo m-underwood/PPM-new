@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+
+    session_start();
+    if(!$_SESSION["ppm_username"]){
+        header("Location: login.php");
+    }
+
+?>
 <html>
     <head>
         <title>Calendar</title>
@@ -8,33 +16,16 @@
     <body>
         <div id="header">
             <img id="logo" src="images/Logo.jpg">
-
-            <div id="txtTitle">
-                
-            </div>
+            <div id="txtTitle"></div>
+            <div id="btnLogout" onclick="window.location.href='logout_ppm.php';"><br><br>Logout</div>
         </div>
 
         <div id="monthViewer">
-            <div id="btnCycleBack" onclick="previous();">
-                &#9650
-            </div>
-
-            <div id="previousMonth">
-                January
-            </div>
-
-            <div id="currentMonth">
-                February
-            </div>
-
-            <div id="nextMonth">
-                March
-            </div>
-
-            <div id="btnCycleForward" onclick="next();">
-                &#9660
-            </div>
+            <div id="previousMonth" class="sidePanel" onclick="previous()"> </div>
+            <div id="nowMonth" class="sidePanel"></div>
+            <div id="nextMonth" class="sidePanel" onclick="next()"></div>
         </div>
+
         <div id="dayViewer">
             <table id="calendar">
                 <thead>
