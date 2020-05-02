@@ -13,9 +13,11 @@
 
 
         $sql = "SELECT * FROM events_tbl WHERE '$combineddate' BETWEEN begin_date AND end_date";
+        $selective = true;
     }
     else {
         $sql = "SELECT * FROM events_tbl";
+        $selective = false;
     }
     
     $result = mysqli_query($con, $sql);
@@ -27,15 +29,27 @@
         <title>Events</title>
         <link rel="stylesheet"  href="css/databaseCSS.css">
         <link rel="icon" href="images/icon.jpg"/>
+        
+        <!--script>
+            function removeDynamic(){
+                window.location.href = (window.location.protocol + window.location.host + window.location.pathname);
+                window.location.href = cleanAddress; // sends user to address
+            }
+        </script-->
+
     </head>
     <body>
         <div id="header">
             <img id="logo" src="images/Logo.jpg"onclick="window.location.href = 'index.php'">
-            Events
+            <?php if ($selective){ echo "Events active on: " . $day . "/" . $month . "/" . $year; } else { echo "All events";}?>
+            <div id="btnLogout" onclick="window.location.href='logout_ppm.php';">Logout</div>
         </div>
         <div id="content">
-            <div id="btnInsert" onclick="window.location.href = 'inserteventsform.php'">
+            <div id="btnInsert" class="buttonHM" onclick="window.location.href = 'inserteventsform.php'">
                 <strong>Insert a new event</strong>
+            </div>
+            <div id="btnViewAll" class="buttonHM" onclick="window.location.href = 'eventsmasterpage.php'">
+                <strong>View all events</strong>
             </div>
             <?php
                 echo"<table id='tblDatabase'>
