@@ -20,7 +20,7 @@ function next() {
 
 function previous() {
     //currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-    if (currentMonth === 0){ currentYear -= 1; }
+    if (currentMonth == 0){ currentYear -= 1; }
     //currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
     if (currentMonth == 0){ currentMonth = 11; } else { currentMonth -= 1; } // DOUBLE EQUALS, NOT TRIPLE
     showCalendar(currentMonth, currentYear);
@@ -47,6 +47,16 @@ function showCalendar(month, year) {
     selectYear.value = year;
     selectMonth.value = month;
 
+    if (month == 0){ lastMonth = 11; pyear = year - 1; } else { lastMonth = month - 1; pyear = year; }
+    previousMonth.innerHTML = monthFull[lastMonth] + "<br>" + pyear;  // previous month
+
+    nowMonth.innerHTML = monthFull[month] + "<br>" + year;  // current month
+
+    if (currentMonth == 11){ followingMonth = (month + 1) % 12; nyear = year + 1 } else { followingMonth = month + 1; nyear = year; }
+    nextMonth.innerHTML = monthFull[followingMonth] + "<br>" + nyear;  // next month
+    console.log(nextMonth);
+    console.log(monthFull[nextMonth]);
+
     // creating all cells
     let date = 1;
     for (let i = 0; i < 6; i++) { // creates row (tr)
@@ -66,9 +76,13 @@ function showCalendar(month, year) {
             else {
                 let cell = document.createElement("td"); // creates cell (td)
                 cell.id = date; // sets cells id to its date
+                cell.className = "displayCell";
                 cell.onclick = function(){
-                    let destination = new URL("http://localhost:8080/PPM-new-master/eventsmasterpage.php"); // location address
-                    //let destination = new URL(window.location.href); // location address
+                    //let destination = new URL("http://localhost:8080/PPM-new-master/eventsmasterpage.php"); // ABSOLUTE ADDRESS
+                    let addressSuffix = 9;
+                    let filePath = window.location.pathname;
+                    let hostPath = filePath.substring(0, filePath.length - addressSuffix); // removes address location
+                    let destination = new URL(window.location.protocol + window.location.host + hostPath + "eventsmasterpage.php"); // location address
                     destination.search = "?day=" + cell.id + "&month=" + (month + 1) + "&year=" + year; // dynamic URL
                     window.location.href = destination; // sends user to address
                 }
