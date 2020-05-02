@@ -30,35 +30,51 @@
     </head>
     <body>
         <div id="header">
-            test
+            <img id="logo" src="images/Logo.jpg"onclick="window.location.href = 'index.php'">
+            Events
         </div>
         <div id="content">
-
-        <a href=inserteventsform.php>Insert a new entry</a><br><br>
+            <div id="btnInsert" onclick="window.location.href = 'inserteventsform.php'">
+                <strong>Insert a new event</strong>
+            </div>
             <?php
-                echo"
-                <table id='tblDatabase'>
-                    <tr>test";
+                echo"<table id='tblDatabase'>
+                    <thead>
+                        <tr>
+                            <th>ID: </th>
+                            <th>Event Name: </th>
+                            <th>Location: </th>
+                            <th>Officers: </th>
+                            <th>Starting Date: </th>
+                            <th>Ending Date: </th>
+                            <th>Starting Time: </th>
+                            <th>Details: </th>
+                            <th>Comments: </th>
+                            <th>Community: </th>
+                            <th>Contact Info: </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>";
                         while($row = mysqli_fetch_assoc($result))
                         {
                             echo
-                            "<td> ID: " . $row["id"].
-                            "<br> Event Name: ". $row["event_name"].
-                            "<br> Location: ". $row["location_name"].
-                            "<br> Officers: ". $row["officers"].
-                            "<br> Starting Date: " . $row["begin_date"].
-                            "<br> Ending Date: " . $row["end_date"].
-                            "<br> Starting Time: " . $row["start_time"].
-                            "<br> Details: " . $row["details"].
-                            "<br> Comments: " . $row["comments"].
-                            "<br> Community Information: " . $row["community_info"].
-                            "<br> Community Contact: " . $row["community_contact"].
-                            "<br><a href=deleteevent.php?ID=". $row["id"].">Delete Entry</a>".
-                            "<br><a href=updateform.php?ID=". $row["id"].">Update Event</a>".
+                            "<tr><td>" . $row["id"].
+                            "<td>". $row["event_name"].
+                            "<td>". $row["location_name"].
+                            "<td>". $row["officers"].
+                            "<td>" . $row["begin_date"].
+                            "<td>" . $row["end_date"].
+                            "<td>" . $row["start_time"].
+                            "<td>" . $row["details"].
+                            "<td>" . $row["comments"].
+                            "<td>" . $row["community_info"].
+                            "<td>" . $row["community_contact"].
+                            "<td><a href=deleteevent.php?ID=". $row["id"].">Delete Entry</a>".
+                            "<td><a href=updateform.php?ID=". $row["id"].">Update Event</a>".
                             "</td>";
                         }
-                    echo
-                "</tr>
+                    echo"</tr>
                 </table>";
             ?>
 
