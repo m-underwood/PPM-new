@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2020 at 08:48 PM
+-- Generation Time: May 02, 2020 at 02:45 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -76,6 +76,28 @@ INSERT INTO `events_tbl` (`id`, `event_name`, `location_name`, `officers`, `begi
 (3, 'Holiday', 'Home', 'Someone', '2020-04-01', '2020-04-22', '16:04:35', 'First attempt at entry', 'needs some comments in here', 'Religious ', 'Phone number: 078905605320'),
 (5, '1', '2', '3', '2020-04-14', '2020-04-21', '05:05:30', '2', '2', '2', '2');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_tbl`
+--
+
+CREATE TABLE `users_tbl` (
+  `id` int(11) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` varchar(20) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_tbl`
+--
+
+INSERT INTO `users_tbl` (`id`, `username`, `password`, `level`) VALUES
+(3, 'admin', '123', 'admin'),
+(2, 'k_lau', '12345', 'user'),
+(1, 'm_underwood', '123456', 'admin');
+
 --
 -- Indexes for dumped tables
 --
@@ -91,6 +113,12 @@ ALTER TABLE `communities_tbl`
 --
 ALTER TABLE `events_tbl`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_tbl`
+--
+ALTER TABLE `users_tbl`
+  ADD UNIQUE KEY `username` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
