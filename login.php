@@ -10,10 +10,10 @@
 		<h1> Sign In </h1>
 		<form id="form" action = "ppm_login.php" method="post">
 			<div>
-			<input id="username" type="username" class ="inputBox" placeholder="Your Username" name = "ppm_username">
+			<input id="username" type="username" class ="inputBox" placeholder="Your Username" name = "ppm_username" required>
 			</div>
 			<div>
-			<input id="password1" type="password" class ="inputBox" placeholder="Your Password" name = "ppm_password">
+			<input id="password1" type="password" class ="inputBox" placeholder="Your Password" name = "ppm_password" required>
 			</div>
 			<button type = "submit" class = "signBtn"> Sign In </button>
 		</form>
