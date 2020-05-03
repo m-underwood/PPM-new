@@ -6,18 +6,32 @@
     @$month = $_REQUEST['month'];
     @$year = $_REQUEST['year'];
     @$combineddate = $year.-$month.-$day;
+    @$sort =$_REQUEST['sort'];
 
-    if ((!is_null($day)) and (!is_null($month)) and (!is_null($year))){
-        //echo "<br><br>Nothing is null.<br><br>";
-        //echo "Day: " . $day . ", Month: " . $month . ", Year: " . $year . ", Combined: " . $combineddate;
+    $colNames = array("id", "event_name", "location_name", "officers", "begin_date", "end_date", "start_time", "details", "comments", "community_info", "community_contact");
 
+    if (isset($day) and isset($month) and isset($year)){
+        $selective= true;
 
-        $sql = "SELECT * FROM events_tbl WHERE '$combineddate' BETWEEN begin_date AND end_date";
-        $selective = true;
+        if (isset($sort)){
+            $column = $colNames[$_REQUEST['sort']];
+            $sql = "SELECT * FROM events_tbl WHERE '$combineddate' BETWEEN begin_date AND end_date ORDER BY $column ASC";
+        }
+        else{
+            $sql = "SELECT * FROM events_tbl WHERE '$combineddate' BETWEEN begin_date AND end_date";
+        }
+
     }
+
     else {
-        $sql = "SELECT * FROM events_tbl";
         $selective = false;
+        if (isset($sort)){
+            $column = $colNames[$_REQUEST['sort']];
+            $sql = "SELECT * FROM events_tbl ORDER BY $column ASC";
+        }
+        else{
+            $sql = "SELECT * FROM events_tbl";
+        }
     }
     
     $result = mysqli_query($con, $sql);
@@ -36,12 +50,30 @@
                 window.location.href = cleanAddress; // sends user to address
             }
         </script-->
+        <?php echo
+            "<script>
+                function sortby(column){
+
+                    let addressRoot = ('http://' + window.location.host + window.location.pathname);";
+                    if (isset($day) and isset($month) and isset($year)){ echo"
+                        let addressEnd = ('?day=' + " . @$_REQUEST['day'] . " + '&month=' + " . @$_REQUEST['month'] . " + '&year=' + " . @$_REQUEST['year'] . " + '&sort=' + column" . ");";
+                    } else {
+                        echo"
+                        let addressEnd = ('?sort=' + column" . ");";
+                    }
+                    echo"
+                    let address = new URL(addressRoot + addressEnd);
+                    event.preventDefault();
+                    window.location.href = address;
+                }
+            </script>";
+        ?>
 
     </head>
     <body>
         <div id="header">
             <img id="logo" src="images/Logo.jpg"onclick="window.location.href = 'index.php'">
-            <?php if ($selective){ echo "Events active on: " . $day . "/" . $month . "/" . $year; } else { echo "All events";}?>
+            <?php if ($selective){ echo "Events active on: " . $day . "/" . $month . "/" . $year; } else { echo "All events"; }?>
             <div id="btnLogout" onclick="window.location.href='logout_ppm.php';">Logout</div>
         </div>
         <div id="content">
@@ -55,17 +87,17 @@
                 echo"<table id='tblDatabase'>
                     <thead>
                         <tr>
-                            <th>ID: </th>
-                            <th>Event Name: </th>
-                            <th>Location: </th>
-                            <th>Officers: </th>
-                            <th>Starting Date: </th>
-                            <th>Ending Date: </th>
-                            <th>Starting Time: </th>
-                            <th>Details: </th>
-                            <th>Comments: </th>
-                            <th>Community: </th>
-                            <th>Contact Info: </th>
+                            <th onclick='sortby(0)';>ID: </th>
+                            <th onclick='sortby(1)';>Event Name: </th>
+                            <th onclick='sortby(2)';>Location: </th>
+                            <th onclick='sortby(3)';>Officers: </th>
+                            <th onclick='sortby(4)';>Starting Date: </th>
+                            <th onclick='sortby(5)';>Ending Date: </th>
+                            <th onclick='sortby(6)';>Starting Time: </th>
+                            <th onclick='sortby(7)';>Details: </th>
+                            <th onclick='sortby(8)';>Comments: </th>
+                            <th onclick='sortby(9)';>Community: </th>
+                            <th onclick='sortby(10)';>Contact Info: </th>
                             <th></th>
                             <th></th>
                         </tr>
