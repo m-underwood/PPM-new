@@ -7,6 +7,7 @@
 body{
     overflow-x: hidden;
     height: auto;
+    background-color: #404040;
 }
 
 #header{
@@ -28,21 +29,24 @@ body{
     cursor: pointer;
     margin-right: 250px;
 }
+
 #btnLogout{
-    height: 10vh;
-    width: fit-content;
+    height: calc(10vh - 1em);
+    float: right;
+    width: 200px;
     border: 1px solid black;
-    background-color: tomato;
+    background-color: #202020;
     color: white;
-    position: absolute;
-    top: 0;
-    right: 0;
     cursor: pointer;
-    font-size: 4vh;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 1em;
+}
+#btnLogout:hover{
+    background-color: #d04040;
 }
 
 #content{
-    background-color: #aaffaa;
     padding: 10px;
 }
 .buttonHM{
@@ -65,10 +69,13 @@ body{
 
 #content table{
     border: 1px solid black;
-    background-color: #dddddd;
+}
+#content table{
+    background-color: white;
 }
 #content thead{
-    background-color:pink;
+    background-color:#1a1a1a;
+    color: white;
     text-align: center;
     border: 1px solid black;
     cursor: pointer;
@@ -79,21 +86,17 @@ body{
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
 }
+#content tr:nth-child(even){
+    background-color: #c0c0c0;
+}
 #content th{
     padding: 10px;
     border: 2px solid black;
 }
 #content td{
-    background-color: lightblue;
     padding: 5px 10px 5px 10px;
     border: 1px solid black;
 }
-
-
-
-
-
-
 
 #insertContent, #updateContent{
     background-color: #ffffff;
