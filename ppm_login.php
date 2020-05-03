@@ -1,68 +1,54 @@
 <?php
-    //establish a connection to the database
+
+    session_start();
     include "connectdatabase.php";
 
-    //check fields are not empty
-    if(isset($_POST["id"])){           
-        $id = $_POST["id"];
+    if(isset($_POST["ppm_username"])){
+        $ppm_username = $_POST["ppm_username"];
     }
-    if(isset($_POST["event_name"])){    
-        $event_name = $_POST["event_name"];
+    if(isset($_POST["ppm_password"])){
+        $ppm_password = $_POST["ppm_password"];
     }
-    if(isset($_POST["location_name"])){
-        $location_name = $_POST["location_name"];
-    }
-    if(isset($_POST["officers"])){
-        $officers = $_POST["officers"];
-    }
+
+    $sql = "SELECT * FROM users_tbl WHERE username = '$ppm_username' AND password = '$ppm_password'";
     
-    if(isset($_POST["begin_date"])){
-        $begin_date = $_POST["begin_date"];
-    }
+    $result = mysqli_query($con, $sql);
 
-    if(isset($_POST["end_date"])){
-        $end_date = $_POST["end_date"];
-    }
-
-    if(isset($_POST["start_time"])){
-        $start_time = $_POST["start_time"];
-        
-    }
+    if(mysqli_num_rows($result) ==1)
+    {
+        echo "<script>alert('You have signed in!')</script>";
+        $_SESSION["ppm_username"] = $ppm_username;
+        echo"<script>window.open('index.php','_self')</script>"; 
     
-    if(isset($_POST["details"])){
-        $details = $_POST["details"];
-    }
-    if(isset($_POST["comments"])){
-        $comments = $_POST["comments"];
-    }
-
-    if(isset($_POST["community_info"])){
-        $community_info = $_POST["community_info"];
-    }
-
-    if(isset($_POST["community_contact"])){
-        $community_contact = $_POST["community_contact"];
-    }
-
-    $sql = "UPDATE events_tbl SET 
-    event_name = '$event_name', 
-    location_name = '$location_name',
-    officers = '$officers', 
-    begin_date = '$begin_date', 
-    end_date = '$end_date', 
-    start_time = '$start_time', 
-    details = '$details', 
-    comments = '$comments',
-    community_info = '$community_info',
-    community_contact = '$community_contact'
-    WHERE ID = '$id'";
-
-    if(mysqli_query($con, $sql)){
-        header("Location: eventsmasterpage.php");
+exit();
     }
     else
     {
-        echo mysqli_error($con);
+        echo "<script>alert('Username or password is incorrect!')</script>";
+		
     }
-
+    
 ?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+ 	<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+	<body>
+	<img class= "logo" src="images/Logo.jpg">
+	<div class = "sign-up-form">
+		<div id="error"></div>
+		<h1> Sign In </h1>
+		<form id="form" action = "ppm_login.php" method="post">
+			<div>
+			<input id="username" type="username" class ="inputBox" placeholder="Your Username" name = "ppm_username" required>
+			</div>
+			<div>
+			<input id="password1" type="password" class ="inputBox" placeholder="Your Password" name = "ppm_password" required>
+			</div>
+			<button type = "submit" class = "signBtn"> Sign In </button>
+		</form>
+			<script src="form.js"></script>
+	</body>
+</html>
