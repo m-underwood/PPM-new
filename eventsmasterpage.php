@@ -77,6 +77,9 @@
             <div id="btnLogout" onclick="window.location.href='logout_ppm.php';">Logout</div>
         </div>
         <div id="content">
+            <div id="returnCalendar" class="buttonHM" onclick="window.location.href = 'index.php'">
+                <strong>Return to calendar</strong>
+            </div>
             <div id="btnInsert" class="buttonHM" onclick="window.location.href = 'inserteventsform.php'">
                 <strong>Insert a new event</strong>
             </div>
