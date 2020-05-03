@@ -48,12 +48,12 @@ function showCalendar(month, year) {
     selectMonth.value = month;
 
     if (month == 0){ lastMonth = 11; pyear = year - 1; } else { lastMonth = month - 1; pyear = year; }
-    previousMonth.innerHTML = monthFull[lastMonth] + "<br>" + pyear;  // previous month
+    previousMonth.innerHTML = "Previous Month: <br>" + monthFull[lastMonth] + " " + pyear;  // previous month
 
-    nowMonth.innerHTML = monthFull[month] + "<br>" + year;  // current month
+    nowMonth.innerHTML = "Current Month: <br>" + monthFull[month] + " " + year;  // current month
 
     if (currentMonth == 11){ followingMonth = (month + 1) % 12; nyear = year + 1 } else { followingMonth = month + 1; nyear = year; }
-    nextMonth.innerHTML = monthFull[followingMonth] + "<br>" + nyear;  // next month
+    nextMonth.innerHTML = "Next Month: <br>" + monthFull[followingMonth] + " " + nyear;  // next month
     console.log(nextMonth);
     console.log(monthFull[nextMonth]);
 
